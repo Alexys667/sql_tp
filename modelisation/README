@@ -1,0 +1,23 @@
+// création des tables
+
+CREATE TABLE user_ (
+   id_user SERIAL PRIMARY KEY,
+   nom VARCHAR(256),
+   prenom VARCHAR(256),
+   email VARCHAR(512)
+);
+
+CREATE TABLE materiel (
+   id_materiel SERIAL PRIMARY KEY,
+   quantite INT
+);
+
+CREATE TABLE reservation (
+   id_reservation SERIAL PRIMARY KEY,
+   date_debut DATE,
+   date_fin DATE,
+   id_materiel INT NOT NULL,
+   id_user INT,
+   FOREIGN KEY (id_materiel) REFERENCES materiel(id_materiel),
+   FOREIGN KEY (id_user) REFERENCES user_(id_user)
+);
